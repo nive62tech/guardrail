@@ -1,0 +1,11 @@
+Terminal 1
+
+cd backend
+uvicorn main:app --reload --port 8000
+
+
+Terminal 2
+
+cd frontend
+npm run dev
+

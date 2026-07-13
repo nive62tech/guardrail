@@ -32,7 +32,7 @@ app = FastAPI(title="GuardRail Risk Engine")
 # Allow the mock React frontend (localhost:3000) to call this API.
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],
+    allow_origins=["http://localhost:5173"],
     allow_methods=["*"],
     allow_headers=["*"],
 )
