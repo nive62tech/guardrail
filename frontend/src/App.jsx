@@ -43,9 +43,18 @@ export default function App() {
     return <SetLimits onStart={handleStart} />;
   }
 
+  const handleEndSession = async () => {
+    const res = await fetch(`http://localhost:8000/api/session/${sessionId}/end`, {
+      method: "POST",
+    });
+    const data = await res.json();
+    setReportCard(data);
+    if (wsRef.current) wsRef.current.close();
+  };
+
   return (
     <div className="flex">
-      <TradePanel snapshot={snapshot} />
+      <TradePanel snapshot={snapshot} onEndSession={handleEndSession} />
       <Sidebar alerts={alerts} reportCard={reportCard} />
     </div>
   );

@@ -3,7 +3,7 @@
 // design. It only receives `snapshot` as a prop and displays it — no
 // logic lives here, so swapping this file never touches the backend.
 
-export default function TradePanel({ snapshot }) {
+export default function TradePanel({ snapshot, onEndSession }) {
   if (!snapshot) {
     return <div className="flex-1 p-6">Waiting for data...</div>;
   }
@@ -40,6 +40,24 @@ export default function TradePanel({ snapshot }) {
         <span className="text-sm text-gray-500">Session status: </span>
         <span className="font-semibold uppercase">{snapshot.status}</span>
       </div>
+
+      {snapshot.status === "active" && (
+        <button
+          onClick={onEndSession}
+          className="mt-4 bg-gray-700 text-white px-4 py-2 rounded"
+        >
+          End Session
+        </button>
+      )}
+
+      {snapshot.status === "active" && (
+        <button
+          onClick={onEndSession}
+          className="mt-4 bg-gray-700 text-white px-4 py-2 rounded"
+        >
+          End Session
+        </button>
+      )}
     </div>
   );
 }
